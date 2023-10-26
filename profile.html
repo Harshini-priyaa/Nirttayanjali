@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <link rel="stylesheet" href="style1.css">
+    
+ 
+</head>
+<body>
+    <img id="imgPreview" src="" alt="Preview">
+   
+    <section>
+
+        <div class="file-input-box">
+            <form >
+                <h2>Upload Your Profile</h2>
+                <label class="upload" for="myFileInput">UPDATE IMAGE</label>
+                
+                <input type="file" id="myFileInput">
+                
+               
+                <input type="file" accept="image/jpeg, image/jpg, image/png " id="myFileInput">
+                <br><br><br>
+                <a class="bh" href="home.html">Back to Home</a>
+               
+            </form>
+        </div>
+             
+   </section> 
+    
+    <script>
+        document.querySelector("#myFileInput").addEventListener("change", function() {
+            const reader = new FileReader();
+
+            reader.addEventListener("load", () => {
+                localStorage.setItem("recent-image", reader.result);
+
+            });
+            reader.readAsDataURL(this.files[0]);
+
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const recentImageDataUrl = localStorage.getItem("recent-image");
+
+            if(recentImageDataUrl) {
+                document.querySelector("#imgPreview").setAttribute("src", recentImageDataUrl);
+
+            }
+        });
+    </script>
+</body>
+
+</html>

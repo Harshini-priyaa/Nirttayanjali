@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css">
+    
+    
+</head>
+<body>
+    <img id="imgPreview" src="" alt="Preview">
+    <input type="file" accept="image/jpeg, image/jpg, image/png " id="myFileInput">
+   
+   <section id="banner">
+    <img class="logo" src="logo.png"alt="logo" >
+    <div class="banner-text">
+        <h1>Nirttayanjali</h1>
+        <p>Let Your MIND Dance With Your BODY</p>
+    </div>
+    <div class="banner-btn">
+        <a href="classes.html"><span></span> Explore</a>
+        <a href="features.html"><span></span> Read more</a><br><br>
+        <a href="signin.html"><span></span>Get Started </a>
+        
+    </div>
+
+
+   </section>
+   <div id="sidenav">
+    <nav>
+        <ul>
+            
+            <li><a href="#">HOME</a></li>
+            <li><a href="features.html">FEATURES</a></li>
+            <li><a href="classes.html">CLASSES</a></li>
+            <li><a href="testimonial.html">TESTIMONIALS</a></li>
+            <li><a href="contact.html">JOIN US</a></li>
+        </ul>
+    </nav>
+
+   </div>
+   <div id="menuBtn">
+    <span class="icon">
+        <ion-icon name="menu" id="menu"></ion-icon>
+    </span>
+   </div>
+
+   <script>
+    var menuBtn = document.getElementById("menuBtn");
+    var sidenav = document.getElementById("sidenav");
+    var menu = document.getElementById("menu");
+    sidenav.style.right=="-250px";
+
+    menuBtn.onclick = function(){
+        if(sidenav.style.right=="-250px"){
+            sidenav.style.right ="0";
+           
+        }
+        else{
+            sidenav.style.right="-250px";
+            
+
+        }
+    }
+   </script>
+   <script>
+    document.querySelector("#myFileInput").addEventListener("change", function() {
+        const reader = new FileReader();
+
+        reader.addEventListener("load", () => {
+            localStorage.setItem("recent-image", reader.result);
+
+        });
+        reader.readAsDataURL(this.files[0]);
+
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const recentImageDataUrl = localStorage.getItem("recent-image");
+
+        if(recentImageDataUrl) {
+            document.querySelector("#imgPreview").setAttribute("src", recentImageDataUrl);
+
+        }
+    });
+</script>
+
+
+   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+</body>
+ 
